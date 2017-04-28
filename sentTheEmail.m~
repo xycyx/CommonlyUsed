@@ -1,0 +1,32 @@
+function [ ] = sentTheEmail( mail, password, toMail, host, port)
+%sentTheEmail sent a email to the addre
+%   mail: your email address
+% password: your password
+% toMail, to this mail
+% host: SMTP host server
+% port: SMTP port
+
+%uw emial default set
+if (isempty(host))
+    host = 'smtp.uw.edu';
+end
+if (isempty(port))
+    prot = '993';
+end
+    
+setpref('Internet','SMTP_Server', host);
+setpref('Internet','E_mail',mail);
+setpref('Internet','SMTP_Username',mail);
+setpref('Internet','SMTP_Password',password);
+
+props = java.lang.System.getProperties;
+props.setProperty('mail.smtp.auth','true');
+props.setProperty('mail.smtp.socketFactory.class', 'javax.net.ssl.SSLSocketFactory');
+props.setProperty('mail.smtp.socketFactory.port',port);
+% Send the email
+
+sendmail(toMail,'MATLAB Progrem Status','Hello! Your program has been completed!');
+
+
+end
+
