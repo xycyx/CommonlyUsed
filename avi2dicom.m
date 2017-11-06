@@ -19,3 +19,12 @@ end
 dicomwrite(data_output, file_name_out);
 
 end
+
+
+% file_list = dir('*.dicom');
+% 
+% for i = 1:length(file_list)
+%     i
+%     file_name = file_list(i).name;
+%     dicom2avi(file_name);
+% end
