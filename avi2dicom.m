@@ -1,4 +1,4 @@
-function [ ] = avi2dicom( file_name )
+function [ ] = avi2dicom( file_name, file_name_out )
 %load the name of uint8 RGB (actuall gray) avifile, save the uint16 dicom file
 %   Detailed explanation goes here
 
@@ -13,7 +13,9 @@ while hasFrame(v)
 end
 
 data_output = permute(data_dicom, [1, 2, 4, 3]);
-file_name_out = [file_name(1: end-4) '.dcm'];
+if nargin < 2
+    file_name_out = [file_name(1: end-4) '.dcm'];
+end
 dicomwrite(data_output, file_name_out);
 
 end
