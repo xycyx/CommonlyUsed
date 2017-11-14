@@ -1,6 +1,7 @@
 function [ ] = Show3Diso( D, thre )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+%Show3Diso shows 3D visiualized mesh image by scalar 3D image
+%   D: input images
+%   thre: threshold 
 
 D = squeeze(D);
 % D = flip(D(10:end,:,:), 1);
@@ -12,7 +13,7 @@ figure;
 % colormap(map)
 Ds = smooth3(D);
 hiso = patch(isosurface(Ds, 5),...
-   'FaceColor',[1,.75,.65],...
+   'FaceColor',[252./255, 157./255, 154./255],...%[1,.75,.65],...
    'EdgeColor','none');
 isonormals(Ds,hiso)
 
